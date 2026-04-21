@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>MealMate Student</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="row spread center">
+          <div>
+            <p class="eyebrow">MealMate Student</p>
+            <h1 id="screen-title">Home</h1>
+          </div>
+          <button id="header-home-btn" class="btn ghost tiny">Home</button>
+        </div>
+        <p id="screen-subtitle" class="muted compact">Today, eat without overthinking.</p>
+      </header>
+
+      <main id="app"></main>
+
+      <nav id="bottom-nav" class="bottom-nav" aria-label="Primary"></nav>
+    </div>
+
+    <template id="onboarding-template">
+      <section class="card card-hero">
+        <h2>1) Your goal</h2>
+        <p class="muted">We personalize meals to your target and timeline.</p>
+        <form id="onboarding-form" class="stack">
+          <label>
+            Current weight (kg)
+            <input name="currentWeight" type="number" min="30" max="300" required />
+          </label>
+          <label>
+            Target weight (kg)
+            <input name="targetWeight" type="number" min="30" max="300" required />
+          </label>
+          <label>
+            Target period (weeks)
+            <input name="targetWeeks" type="number" min="1" max="52" required />
+          </label>
+          <label>
+            Lifestyle
+            <select name="lifestyle">
+              <option value="mostly-sitting">Mostly sitting (desk/study)</option>
+              <option value="mixed">Mixed activity</option>
+              <option value="active">Active student life</option>
+            </select>
+          </label>
+          <label>
+            Daily cooking time preference
+            <select name="cookTime">
+              <option value="10">10 min max</option>
+              <option value="20" selected>20 min max</option>
+              <option value="30">30 min max</option>
+            </select>
+          </label>
+          <button type="submit" class="btn primary">Save and continue</button>
+        </form>
+      </section>
+    </template>
+
+    <template id="inventory-template">
+      <section class="card">
+        <h2>2) What do you have?</h2>
+        <p class="muted">Add ingredients once, update anytime.</p>
+        <form id="ingredient-form" class="row">
+          <input id="ingredient-input" type="text" placeholder="e.g. eggs, tofu, rice" />
+          <button class="btn secondary" type="submit">Add</button>
+        </form>
+        <div id="ingredient-guidance" class="helper-box"></div>
+        <p id="ingredient-feedback" class="feedback" aria-live="polite"></p>
+        <div id="quick-add-groups"></div>
+        <h3 class="section-title">Ingredients you already have</h3>
+        <div id="ingredient-tags" class="tags"></div>
+        <div id="inventory-empty" class="empty-box"></div>
+        <div class="actions">
+          <button id="generate-plan" class="btn primary">Generate today plan</button>
+        </div>
+      </section>
+    </template>
+
+    <template id="plan-template">
+      <section class="card">
+        <div class="row spread center">
+          <h2>Today meal plan</h2>
+          <button id="regenerate-plan" class="btn secondary">Regenerate</button>
+        </div>
+        <div id="generation-status" class="status-box"></div>
+        <p id="goal-summary" class="muted"></p>
+        <div id="nutrition-summary" class="nutrition"></div>
+        <div id="missing-summary" class="shopping"></div>
+        <div id="retry-actions" class="retry-actions"></div>
+        <div id="meal-list" class="stack"></div>
+      </section>
+    </template>
+
+    <template id="recipe-template">
+      <section class="card">
+        <div class="row spread center">
+          <h2 id="recipe-title"></h2>
+          <button id="close-recipe" class="btn secondary">Back to plan</button>
+        </div>
+        <div id="recipe-image" class="recipe-image"></div>
+        <p id="recipe-meta" class="muted"></p>
+        <div id="recipe-substitutes" class="substitute-box"></div>
+        <h3>Ingredients</h3>
+        <ul id="recipe-ingredients"></ul>
+        <h3>Steps</h3>
+        <ol id="recipe-steps"></ol>
+      </section>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
